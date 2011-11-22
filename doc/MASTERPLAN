@@ -1,0 +1,25 @@
+Milestone 1:
+* Load data and do generic print to stdout
+
+Milestone 2:
+* Create function to drop one column: "location"
+* Create data -> drop column -> stdout pipeline
+
+Milestone 3:
+* Create function to merge two columns: "fname" "lname" -> "fullname"
+* Extend drop column function to be able to drop multiple columns (ie. take list of column names)
+* Create data -> merge("fname", "lname" -> "fullname") -> drop("fname", "lname") -> stdout
+
+Milestone 4:
+* Create csv reader
+* Create csv reader -> any function -> stdout pipeline
+
+Milestone X:
+* manipulation of data in a column (eg. ALL CAPS, search/replace)
+* column renaming
+* write to csv
+* read from a database
+* write to DB
+* filter function (ie. two outputs)
+* merge function (ie. two inputs -> one output) - doesn't have to be join - could just be append one table to the other - which should probably require the same columns
+

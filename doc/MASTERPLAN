@@ -21,6 +21,7 @@ Milestone 4:
 Milestone 5:
 * multi output node (eg. filter)
 * program multi out
+* Examine if drift makes sense to use/be compatible with
 
 Milestone 6 - CLEANUP:
 * Tests

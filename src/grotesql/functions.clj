@@ -3,12 +3,10 @@
 ; TODO:
 ; * Type checking - all keys supplied has to be symbols
 
-
-; This should be easily changeable to include multiple keys - only need to find the damn function/macro that changes '(:a :b :c) to :a :b :c ... grrrrr.
 (defn drop-column
 	"Takes a single key and a table and drops the columns that has the names of the keys"
 	[ key table ]
-	(map (fn [row] (dissoc row key)) table) 
+	(map (fn [rows] (apply dissoc rows key )) table ))
 
 ; TODO/FIXME: 
 ; * Make sure that we do not supply a key already in use (newkey cannot be a key used in table)

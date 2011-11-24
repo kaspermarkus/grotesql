@@ -5,7 +5,7 @@
 (defn drop-column
 	"Takes [keys] and a table and drops the columns that has the names of the keys"
 	[ keys table ]
-	(map (fn [row] (apply dissoc rows keys )) table ))
+	(map (fn [row] (apply dissoc row keys )) table ))
 
 ; TODO/FIXME: 
 ; * Make sure that we do not supply a key already in use (newkey cannot be a key used in table)

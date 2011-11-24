@@ -1,5 +1,6 @@
 (def local-path "/home/kasper/projects/")
 
+;;;;;;;;;;;;; load stuff
 (load-file (str local-path "grotesql/src/grotesql/data.clj"))
 (refer  'grotesql.data)
 (load-file (str local-path "grotesql/src/grotesql/output.clj"))
@@ -7,5 +8,56 @@
 (load-file (str local-path "grotesql/src/grotesql/functions.clj"))
 (refer  'grotesql.functions)
 
+;;;;;;;;;;;;; Create some curried functions used by example1:
+; drop column :fname
+(def drop-fname (partial drop-column :fname))
 
+; drop column :lname
+(def drop-lname (partial drop-column :lname))
+
+; merge :fname and :lname into :fullname
+(def create-fullname (partial str-columns :fname :lname :fullname " "))
+
+; Create fake input 1:
+(def fake-input1 (partial emulate-input table1))
+
+; Create fake input 2:
+(def fake-input2 (partial emulate-input table2))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Example - merge names to full name, and drop fname+lname column
+; then print to stdout
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; create pipe
+(def example1-list (list stdout drop-fname drop-lname create-fullname fake-input1))
+(def example1-pipe (create-pipe example1-list))
+
+; run it
+(example1-pipe)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Example - program involving multi-input node
+; One pipe is (read input, drop :fname)
+; Other pipe is (read input2, merge country-city, drop country, drop city)
+; Final pipe is a concat that takes the two pipes, drops age, and prints
+
+; Extra functions:
+(def drop-country (partial drop-column :country))
+(def drop-city (partial drop-column :city))
+(def drop-age (partial drop-column :age))
+(def create-location (partial str-columns :city :country :location ", "))
+
+; create input2 pipe
+(def input2-list (list drop-city drop-country create-location fake-input2))
+(def input2-pipe (create-pipe input2-list))
+
+; create primary pipe
+(def input1-list (list stdout drop-age (partial concat-tables (input2-pipe)) drop-fname fake-input1))
+(def input1-pipe (create-pipe input1-list))
+
+; run it
+(input1-pipe)
 

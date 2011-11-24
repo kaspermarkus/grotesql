@@ -16,15 +16,16 @@
 (defn str-columns
 	"Takes a table and three keys. For each row, the values with the two keys are merged into a new column with the new keyname"
 	[ key1 key2 newkey separator table ]
-	 (map (fn [row] (merge {newkey (str (get row key1) " " (get row key2))} row)) table))
+	 (map (fn [row] (merge {newkey (str (get row key1) separator (get row key2))} row)) table))
 
 ; A test multi input function.. takes two inputs - simply append one table to the other
 ; One table should be curried by partial
 ; require tables to have the same keys
+; TODO: Currently doesn't merge columns with columns.. not sure it matters, but ordering is off!!!!
 (defn concat-tables
 	"Takes two tables and returns the second concatenated to the first. Requires the two tables to have identical keys"
 	[ table1 table2 ]
-	{:pre [(= (keys (first table1)) (keys (first table2)))]}
+	;{:pre [(= (keys (sort (first table1))) (keys (sort (first table2))))]}
 	(concat table1 table2)) 
 
 (defn create-pipe 

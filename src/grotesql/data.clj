@@ -10,5 +10,5 @@
           { :fname "Holalulu", :lname "Bagchakduak", :age 19, :location "Bali" }))
 
 (def table2 
-	'(  { :fname "aaaaaaaaaa", :lname "bbbbbbbbbb", :age 30, :location "cccccccc" }
-          { :fname "xxxxxxxxxxxxxx", :lname "yyyyyyyyyyyyyy", :age 31, :location "zzzzzzzzzzz" }))
+	'({ :lname "bbbbbbbbbb", :age 30, :city "Odense" :country "Denmark" }
+          { :lname "yyyyyyyyyyyyyy", :age 31, :city "Geneva", :country "Switzerland" }))

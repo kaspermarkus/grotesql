@@ -1,0 +1,11 @@
+(def local-path "/home/kasper/projects/")
+
+(load-file (str local-path "grotesql/src/grotesql/data.clj"))
+(refer  'grotesql.data)
+(load-file (str local-path "grotesql/src/grotesql/output.clj"))
+(refer  'grotesql.output)
+(load-file (str local-path "grotesql/src/grotesql/functions.clj"))
+(refer  'grotesql.functions)
+
+
+

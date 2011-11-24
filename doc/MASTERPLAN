@@ -9,17 +9,28 @@ Milestone 3:
 * Create function to merge two columns: "fname" "lname" -> "fullname"
 * Extend drop column function to be able to drop multiple columns (ie. take list of column names)
 * Create data -> merge("fname", "lname" -> "fullname") -> drop("fname", "lname") -> stdout
+* Multi input node
+* Macro implementation
 
 Milestone 4:
 * Create csv reader
 * Create csv reader -> any function -> stdout pipeline
+* Create csv write
+* Pipeline fra csv -> manipulation - > csv out
+
+Milestone 5:
+* multi output node (eg. filter)
+* program multi out
+
+Milestone 6 - CLEANUP:
+* Tests
+* Documentation
+* Examples
 
 Milestone X:
 * manipulation of data in a column (eg. ALL CAPS, search/replace)
 * column renaming
-* write to csv
 * read from a database
 * write to DB
-* filter function (ie. two outputs)
-* merge function (ie. two inputs -> one output) - doesn't have to be join - could just be append one table to the other - which should probably require the same columns
+* more functions
 

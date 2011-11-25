@@ -2,7 +2,7 @@
 (require '[clojure.data.csv :as csv]
          '[clojure.java.io :as io])
 
-(defn input_csv 
+(defn input-csv 
 	"Reads csv file, separated by separator. If header is true, first line is considered header"
 	[ filename separator header? ] 
 	(let [  full-input (with-open [in-file (io/reader filename)] (doall (csv/read-csv in-file :separator separator)))

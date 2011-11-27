@@ -20,13 +20,17 @@
 ; require tables to have the same keys
 ; TODO: Currently doesn't merge columns with columns.. not sure it matters, but ordering is off!!!!
 (defn concat-tables
-	"Takes two tables and returns the second concatenated to the first. Requires the two tables to have identical keys"
+	"Takes two tables and returns the second concatenated to the first. 
+	Requires the two tables to have identical keys"
 	[ table1 table2 ]
 	;{:pre [(= (keys (sort (first table1))) (keys (sort (first table2))))]}
 	(concat table1 table2)) 
 
 (defn create-pipe 
-	"Compact a list of functions to a pipe and return a new function that is a comp of all the functions in the list and only takes one parameter - the table to run through the pipe. Functions are executed from left to right - first entry in list executed first, that's passed to second, etc."
+	"Compact a list of functions to a pipe and return a new function that is a comp of all
+	the functions in the list and only takes one parameter - the table to run through the pipe.
+	Functions are executed from left to right - first entry in list executed first, that's 
+	passed to second, etc."
 	[ function-list ]
 	; perhaps a check that all entries are functions requiring one parameter?
 	(apply comp function-list))

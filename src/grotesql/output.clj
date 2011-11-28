@@ -5,7 +5,9 @@
 (defn stdout
 	"Prints table to standard output"
 	[ table ]
-	 (println (apply str (interpose "\n" (map (fn [row] (apply str (interpose ", " (vals row)))) table)))))
+	(do
+	   (println (apply str (interpose ", " (map name (keys (first table))))))
+	   (println (apply str (interpose "\n" (map (fn [row] (apply str (interpose ", " (vals row)))) table))))))
 
 (defn output-csv
 	"Outputs to csv file separated by separator. If header is true, keys are used for header in first row"

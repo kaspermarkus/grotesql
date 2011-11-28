@@ -4,7 +4,7 @@
 
 (defn input-csv 
 	"Reads csv file, separated by separator. If header is true, first line is considered header"
-	[ filename separator header? ] 
+	([ filename separator header? ]
 	(let [  full-input (with-open [in-file (io/reader filename)] (doall (csv/read-csv in-file :separator separator)))
 		data (if header? (rest full-input) full-input)
 		headers (if header?
@@ -15,3 +15,6 @@
                  (filter identity (map (fn [row] ;filter to ensure no nil values
 			(if (not (and (= [""] row) (= (count row) 1))) ;ignore empty lines (make nil)
 				(apply hash-map (interleave headers row)))) data))))
+	; Limit number of lines taken by supplying it as extra parameter
+	([filename separator header? numlines]
+	(take numlines (input-csv filename separator header?))))

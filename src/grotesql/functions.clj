@@ -40,4 +40,8 @@
 	[ input-table ]
 	input-table)
 
-
+(defn split-table
+	"Split table with fun by a partition-by."
+	[fun alt-pipe in-table]  
+	(let [a (partition-by fun in-table )  fst (first a) snd (second a)]
+		(alt-pipe fst) snd))

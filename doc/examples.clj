@@ -53,3 +53,9 @@
 ; run it
 (input1-pipe)
 
+;;
+;Example - program with multiple outputs
+(defnode splitter split-table (fn [e] (> (:age e) 31)) (defpipe bam [stdout])) 
+(def example3-list [fake-input1 splitter stdout] )
+(defpipe example3-pipe example3-list)
+(example3-pipe)

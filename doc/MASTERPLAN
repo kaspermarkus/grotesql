@@ -22,6 +22,7 @@ Milestone 5:
 * multi output node (eg. filter)
 * program multi out
 * Examine if drift makes sense to use/be compatible with
+* Debug nodes,  pipes input and prints it. Maybe with a clone node?
 
 Milestone 6 - CLEANUP:
 * Tests
@@ -34,4 +35,3 @@ Milestone X:
 * read from a database
 * write to DB
 * more functions
-

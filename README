@@ -1,13 +1,13 @@
 # grotesql
 
-FIXME: write description
+
 
 ## Usage
 
-FIXME: write
+Load, Manipulate, Save data
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2012 Kevin <kijmail@gmail.com>
 
 Distributed under the Eclipse Public License, the same as Clojure.

@@ -1,20 +1,17 @@
 (ns grotesql.core
   (:use [grotesql.output]
+        [grotesql.functions]
         [grotesql.input]))
 
                                         ;Private
 
 (def  ^:dynamic *result_work* (ref '()))
 
-(defn drop-columns
-  "Takes [keys] and a table and drops the columns that has the names of the keys"
-  [ keys table ]
-  (map (fn [row] (apply dissoc row keys )) table ))
+
 
 (defn ignore-node? [node]
   "takes a node and test if the node is to be executed"
   (or (true? (:disabled? node)) (= :dropzone (:type node)) (empty? node)))
-
 
 
                                         ;Public
@@ -55,9 +52,6 @@
 
                                         ;test
                                         ;run
-
-(defn ref-work [no]
-  (ref-set *result_work* (node no)))
 
 (defn run!
   "This is the main intake point, 

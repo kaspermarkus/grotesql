@@ -1,10 +1,9 @@
 (ns grotesql.core
-(:use [clojure.pprint])
-(:require 
-		[clojure.data.csv :as csv]
-    	[clojure.java.io :as io ] ))
-		
-;Private
+  (:use [clojure.pprint]
+        [grotesql.output]
+        [grotesql.input]))
+
+                                        ;Private
 
 (def  ^:dynamic *result_work* (ref '()))
 

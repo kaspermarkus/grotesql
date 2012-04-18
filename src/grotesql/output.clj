@@ -3,14 +3,21 @@
          '[clojure.java.io :as io])
 
 (defn stdout
-	"Prints table to standard output"
+	"Prints table to standard output. Values are comma separated and rows are newline separated.
+
+	Arguments:
+	table: the data to print"
 	[ table ]
 	(do
 	   (println (apply str (interpose ", " (map name (keys (first table))))))
 	   (println (apply str (interpose "\n" (map (fn [row] (apply str (interpose ", " (vals row)))) table))))))
 
 (defn output-csv
-	"Outputs to csv file separated by separator. If header is true, keys are used for header in first row"
+	"Writes to .csv file (comma separated values)
+
+	filename: the file to write (string)
+	separator: the separator of the csv file (char)
+	header?: true if the first line of the .csv file should be a headers (boolean)"
 	[ filename separator header? table ]
 	(let [  data-body (map (fn [row] (vec (vals row))) table) 
 		out-data (if header? 

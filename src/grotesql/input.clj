@@ -3,7 +3,12 @@
          '[clojure.java.io :as io])
 
 (defn input-csv 
-	"Reads csv file, separated by separator. If header is true, first line is considered header"
+	"Reads .csv file (comma separated values) and returns the data.
+
+	filename: the file to read (string)
+	separator: the separator of the csv file (char)
+	header?: true if the first line of the .csv file contains headers (boolean)
+	numlines: OPTIONAL - the number of lines to read from output"
 	([ filename separator header? ]
 	(let [  full-input (with-open [in-file (io/reader filename)] (doall (csv/read-csv in-file :separator separator)))
 		data (if header? (rest full-input) full-input)

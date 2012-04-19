@@ -1,2 +1,5 @@
 input.clj:
 Doesn't handle non-existing filenames. This currently results in an exception. Once a proper handling of this is implemented, unit tests should be written for it as well
+
+core.clj:
+(def  ^:dynamic *result_work* (ref '()))  - This is wrong. A local binding in the run! would maybe be better  

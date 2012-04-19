@@ -1,6 +1,7 @@
 (ns grotesql.test.output
   (:use [grotesql.output])
   (:use clojure.test))
+(require '[clojure.java.io :as io])
 
 (def test-output-csv-data1 
 	'({:Name "Kasper" :Age "31" :Country "Switzerland"}
@@ -28,7 +29,9 @@
 	;write file with NO headers and comma separation
 	(is (= 
 		(write-n-slurp "test/grotesql/test/output.csv" \, false test-output-csv-data1) 
-		test-output-csv-expected2)))
+		test-output-csv-expected2))
+	;cleanup
+	(io/delete-file (io/file "test/grotesql/test/output.csv")))
 
 (def test-stdout-expected 
 	"Name, Age, Country\nKasper, 31, Switzerland\nKevin, 31, Denmark\nSanta Clause, 800, North Pole\n")

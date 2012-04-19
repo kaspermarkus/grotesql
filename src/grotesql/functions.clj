@@ -1,15 +1,9 @@
-(ns grotesql.functions
-  :use grotesql.core)
+(ns grotesql.functions)
 
-(comment 
-(defmethod node :mysql-in [conn user pass ]
-	(pprint {:connection conn, :username user :password pass}))
-
-
-(defn drop-column
-	"Takes [keys] and a table and drops the columns that has the names of the keys"
-	[ keys table ]
-	(map (fn [row] (apply dissoc row keys )) table ))
+(defn drop-columns
+  "Takes [keys] and a table and drops the columns that has the names of the keys"
+  [ keys table ]
+  (map (fn [row] (apply dissoc row keys )) table ))
 
 ; TODO/FIXME: 
 ; * Make sure that we do not supply a key already in use (newkey cannot be a key used in table)
@@ -19,4 +13,3 @@
 	[ key1 key2 newkey separator table ]
 	 (map (fn [row] 
          (merge {newkey (str (get row key1) separator (get row key2))} row)) table))
-)

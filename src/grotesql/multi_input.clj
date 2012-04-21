@@ -14,7 +14,7 @@
         (flatten 
             (map 
                 (fn [ t1 ]
-                    (filter (fn [x] (not (nil? x))) 
+                    (filter #(not (nil? %)) 
                         (map 
                             (fn [ t2 ] (if (= (get t1 join1) (get t2 join2)) (merge t1 t2)))
                             table2)))                   
